@@ -15,8 +15,8 @@
 const sidebars = {
   // By default, Docusaurus generates a sidebar from the docs folder structure
   tutorialSidebar: [
-
-    // "browser",
+    "intro",
+    "browser",
     "HTML",
     "css",
     {
@@ -188,11 +188,7 @@ const sidebars = {
       id: 'binary',
       label: '二进制与编码'
     },
-    {
-      type: 'doc',
-      id: 'browser',
-      label: '浏览器底层原理'
-    },
+
     {
       type: 'category',
       label: 'Canvas',
@@ -240,10 +236,16 @@ const sidebars = {
     "mysql",
     "linux",
     "docker",
-    // "设计模式",
+    "设计模式",
     "websocket",
-    // "webgl",
-    // "php",
+    "webgl",
+    "php",
+    "写在前面",
+    "其它",
+    "代码段记录",
+    "第三方库",
+    "面试题",
+    "akara的考验",
   ],
 
   // But you can create a sidebar manually

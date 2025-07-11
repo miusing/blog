@@ -2,46 +2,42 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# 欢迎来到缪斯的技术博客
 
-Let's discover **Docusaurus in less than 5 minutes**.
+欢迎来到我的前端技术博客！这里记录了我在前端开发路上的学习笔记和技术总结。
 
-## Getting Started
+## 关于这个博客
 
-Get started by **creating a new site**.
+这个博客使用 **Docusaurus** 构建，包含了我在前端开发中积累的各种技术文档和学习心得。
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+## 主要内容
 
-### What you'll need
+### 🌐 前端基础
+- **HTML** - 网页结构的基础
+- **CSS** - 样式设计与布局
+- **JavaScript** - 核心编程语言
 
-- [Node.js](https://nodejs.org/en/download/) version 14 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+### ⚛️ 前端框架
+- **React** - 组件化开发
+- **Vue** - 渐进式框架
+- **TypeScript** - 类型安全的JavaScript
 
-## Generate a new site
+### 🛠️ 开发工具
+- **Node.js** - 服务端JavaScript
+- **前端工程化** - 构建工具与开发流程
+- **Git** - 版本控制
 
-Generate a new Docusaurus site using the **classic template**.
+### 🎨 图形与可视化
+- **Canvas** - 2D图形绘制
+- **WebGL** - 3D图形渲染
 
-The classic template will automatically be added to your project after you run the command:
+### 🔧 其他技术
+- **Rust** - 系统编程语言
+- **数据库** - MongoDB、MySQL
+- **服务器** - Linux、Docker
 
-```bash
-npm init docusaurus@latest my-website classic
-```
+## 开始阅读
 
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
+点击左侧导航栏开始浏览各个技术主题，每个主题都包含详细的学习笔记和实践经验。
 
-The command also installs all necessary dependencies you need to run Docusaurus.
-
-## Start your site
-
-Run the development server:
-
-```bash
-cd my-website
-npm run start
-```
-
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
-
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
-
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+希望这些内容能对你的学习有所帮助！ 🚀
