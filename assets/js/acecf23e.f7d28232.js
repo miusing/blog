@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkakara=self.webpackChunkakara||[]).push([[1903],{1912:a=>{a.exports=JSON.parse('{"blogBasePath":"/about","blogTitle":"\u4e2a\u4eba\u4ecb\u7ecd","authorsListPath":"/about/authors"}')}}]);

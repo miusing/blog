@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkakara=self.webpackChunkakara||[]).push([[7472],{5513:e=>{e.exports=JSON.parse('{"title":"\u4e2a\u4eba\u4ecb\u7ecd","items":[{"title":"\u5173\u4e8e\u6211","permalink":"/about/about-me","unlisted":false,"date":"2024-01-01T00:00:00.000Z"}]}')}}]);

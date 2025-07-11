@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkakara=self.webpackChunkakara||[]).push([[3089],{2145:a=>{a.exports=JSON.parse('{"tags":[{"label":"\u4e2a\u4eba\u4ecb\u7ecd","permalink":"/about/tags/\u4e2a\u4eba\u4ecb\u7ecd","count":1},{"label":"\u5173\u4e8e\u6211","permalink":"/about/tags/\u5173\u4e8e\u6211","count":1}]}')}}]);

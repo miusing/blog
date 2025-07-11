@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkakara=self.webpackChunkakara||[]).push([[6910],{2639:a=>{a.exports=JSON.parse('{"authors":[{"name":"\u7f2a\u65af","title":"\u524d\u7aef\u5f00\u53d1\u8005","url":"https://github.com/miusing","email":"miusing@example.com","page":{"permalink":"/about/authors/miusing"},"imageURL":"https://github.com/miusing.png","key":"miusing","count":1}]}')}}]);
