@@ -703,12 +703,38 @@ $$
 
 ### 日常写作流程
 
+#### 方式一：直接在 master 分支工作（推荐个人使用）
+
+```bash
+# 1. 确保在 master 分支并拉取最新代码
+git checkout master
+git pull origin master
+
+# 2. 创建文章文件
+touch blog/2024-01-15-new-article.md
+
+# 3. 编写内容
+code blog/2024-01-15-new-article.md
+
+# 4. 本地预览
+npm start
+
+# 5. 提交并推送（自动触发部署）
+git add .
+git commit -m "feat: 添加新文章 - 文章标题"
+git push origin master
+
+# 🎉 网站会在 2-5 分钟内自动更新！
+```
+
+#### 方式二：使用分支工作（团队协作）
+
 ```bash
 # 1. 确保在 master 分支
 git checkout master
 git pull origin master
 
-# 2. 创建新分支（可选，用于团队协作）
+# 2. 创建新分支
 git checkout -b feature/new-article
 
 # 3. 创建文章文件
@@ -724,13 +750,62 @@ npm start
 git add .
 git commit -m "feat: 添加新文章 - 文章标题"
 
-# 7. 推送到 master 分支（直接部署）
+# 7. 推送分支并创建 PR
+git push origin feature/new-article
+
+# 8. 合并到 master 后自动部署
 git checkout master
 git merge feature/new-article
 git push origin master
+```
 
-# 或者推送分支并创建 PR（团队协作）
-git push origin feature/new-article
+### 📝 日常使用说明
+
+#### 快速发布文章
+
+```bash
+# 最简单的发布流程
+echo "---
+title: 我的新文章
+date: $(date +%Y-%m-%d)
+authors: [miusing]
+tags: [技术, 分享]
+---
+
+# 我的新文章
+
+这是文章内容...
+
+<!-- truncate -->
+
+更多内容..." > blog/$(date +%Y-%m-%d)-my-new-article.md
+
+# 提交并发布
+git add .
+git commit -m "feat: 添加新文章 - 我的新文章"
+git push origin master
+```
+
+#### 本地开发和预览
+
+```bash
+# 启动开发服务器
+npm start
+# 访问 http://localhost:3000
+
+# 构建生产版本
+npm run build
+
+# 本地预览构建结果
+npm run serve
+# 访问 http://localhost:3000
+```
+
+#### 手动部署（备用方案）
+
+```bash
+# 如果自动部署失败，可以手动部署
+GIT_USER=miusing USE_SSH=true npm run deploy
 ```
 
 ### 内容组织建议
@@ -1465,6 +1540,61 @@ module.exports = {
 - [GitHub Pages](https://pages.github.com/) - 免费的静态网站托管
 - [Ant Design](https://ant.design/) - 企业级 UI 设计语言
 - [@easyops-cn/docusaurus-search-local](https://github.com/easyops-cn/docusaurus-search-local) - 本地搜索插件
+
+## 🚀 快速参考
+
+### 常用命令
+
+| 命令 | 用途 |
+|------|------|
+| `npm start` | 启动开发服务器 |
+| `npm run build` | 构建生产版本 |
+| `npm run serve` | 预览构建结果 |
+| `npm run deploy` | 手动部署到 GitHub Pages |
+| `npm run clear` | 清除缓存 |
+
+### 重要链接
+
+| 链接 | 说明 |
+|------|------|
+| [网站地址](https://wooyee.cc) | 博客主页 |
+| [GitHub 仓库](https://github.com/miusing/blog) | 源代码 |
+| [GitHub Actions](https://github.com/miusing/blog/actions) | 部署状态 |
+| [Docusaurus 文档](https://docusaurus.io/docs) | 官方文档 |
+
+### 文件结构速查
+
+```
+blog/                    # 博客文章目录
+├── YYYY-MM-DD-title.md  # 博客文章格式
+└── img/                 # 博客图片
+
+docs/                    # 文档目录
+├── category/            # 分类目录
+└── page.md             # 文档页面
+
+static/                  # 静态资源
+├── img/                # 全局图片
+└── CNAME               # 自定义域名
+
+src/                     # 源代码
+├── components/         # 自定义组件
+├── css/               # 样式文件
+└── pages/             # 自定义页面
+```
+
+### 部署状态检查
+
+```bash
+# 检查部署状态
+curl -I https://wooyee.cc
+
+# 查看最新提交
+git log --oneline -5
+
+# 检查分支状态
+git status
+```
 
 ---
 
