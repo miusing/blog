@@ -749,8 +749,12 @@ git commit -m "feat: 添加新文章 - 我的新文章"
 git push origin master
 
 # 部署到网站
+# 方式一：GitHub Pages 手动部署
 npm run build
 GIT_USER=miusing USE_SSH=true npm run deploy
+
+# 方式二：Vercel 自动部署（推荐）
+# 推送代码后 Vercel 会自动构建和部署，无需额外操作
 ```
 
 #### 本地开发和预览
@@ -1182,9 +1186,13 @@ git add .
 git commit -m "feat: 添加 JavaScript 入门指南"
 git push origin master
 
-# 4. 手动部署到网站
+# 4. 部署到网站
+# 方式一：GitHub Pages 手动部署
 npm run build
 GIT_USER=miusing USE_SSH=true npm run deploy
+
+# 方式二：Vercel 自动部署（推荐）
+# 推送代码后自动部署，无需手动操作
 ```
 
 ### 更新个人介绍
@@ -1550,12 +1558,21 @@ module.exports = {
 | `npm run deploy` | 手动部署到 GitHub Pages |
 | `npm run clear` | 清除缓存 |
 
+### 部署方式对比
+
+| 平台 | 部署方式 | 优势 | 适用场景 |
+|------|----------|------|----------|
+| **Vercel** | 一键部署 | 🚀 自动部署、全球CDN、零配置 | 推荐新手使用 |
+| **GitHub Pages** | 手动部署 | 🔧 完全可控、免费、稳定 | 适合有经验的开发者 |
+| **Netlify** | 连接仓库 | 🌐 功能丰富、表单处理 | 需要额外功能时 |
+
 ### 重要链接
 
 | 链接 | 说明 |
 |------|------|
 | [网站地址](https://wooyee.cc) | 博客主页 |
 | [GitHub 仓库](https://github.com/miusing/blog) | 源代码 |
+| [Vercel 一键部署](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fmiusing%2Fblog) | 快速部署到 Vercel |
 | [Docusaurus 文档](https://docusaurus.io/docs) | 官方文档 |
 
 ### 文件结构速查
