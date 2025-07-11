@@ -131,9 +131,7 @@ blog/
 
 ## 🚀 部署指南
 
-### 方式一：自动部署（推荐）
-
-项目已配置 GitHub Actions，推送到 `master` 分支即可自动部署：
+### 手动部署
 
 ```bash
 # 1. 克隆项目到本地
@@ -146,23 +144,21 @@ npm install
 # 3. 本地开发和预览
 npm start
 
-# 4. 提交代码到 master 分支，自动触发部署
-git add .
-git commit -m "feat: 添加新文章"
-git push origin master  # 推送到 master 分支
+# 4. 构建和部署
+npm run build
+GIT_USER=miusing USE_SSH=true npm run deploy
 ```
 
 **部署流程说明：**
-1. 推送代码到 `master` 分支（源代码分支）
-2. GitHub Actions 自动触发构建和部署
-3. 使用 `docusaurus deploy` 命令自动构建并推送到 `gh-pages` 分支
-4. GitHub Pages 从 `gh-pages` 分支提供网站服务
-5. 网站自动更新到 `https://wooyee.cc`
+1. 本地构建生成静态文件
+2. 使用 `docusaurus deploy` 命令推送到 `gh-pages` 分支
+3. GitHub Pages 从 `gh-pages` 分支提供网站服务
+4. 网站更新到 `https://wooyee.cc`
 
 **技术细节：**
 - 使用 Docusaurus 内置的部署功能
 - 自动处理 CNAME 文件（自定义域名）
-- 支持增量部署，只更新变更的文件
+- 使用 SSH 认证，安全可靠
 
 ### 分支管理说明
 
@@ -171,23 +167,13 @@ git push origin master  # 推送到 master 分支
 | 分支 | 用途 | 内容 | 操作 |
 |------|------|------|------|
 | `master` | 源代码分支 | Docusaurus 源码、文档、配置 | 日常开发和提交 |
-| `gh-pages` | 部署分支 | 构建后的静态文件 | 自动生成，不要手动修改 |
+| `gh-pages` | 部署分支 | 构建后的静态文件 | 手动部署生成 |
 
 **重要提醒：**
 - ✅ **DO**: 向 `master` 分支提交代码
 - ❌ **DON'T**: 手动修改 `gh-pages` 分支
-- ✅ **DO**: 让 GitHub Actions 自动处理部署
+- ✅ **DO**: 使用 `npm run deploy` 命令部署
 - ❌ **DON'T**: 直接推送到 `gh-pages` 分支
-
-### 方式二：手动部署
-
-```bash
-# 构建项目
-npm run build
-
-# 手动部署到 GitHub Pages
-GIT_USER=miusing USE_SSH=true npm run deploy
-```
 
 ### 部署到其他平台
 
@@ -703,7 +689,7 @@ $$
 
 ### 日常写作流程
 
-#### 方式一：直接在 master 分支工作（推荐个人使用）
+#### 日常写作和部署流程
 
 ```bash
 # 1. 确保在 master 分支并拉取最新代码
@@ -719,44 +705,16 @@ code blog/2024-01-15-new-article.md
 # 4. 本地预览
 npm start
 
-# 5. 提交并推送（自动触发部署）
+# 5. 提交代码到 master 分支
 git add .
 git commit -m "feat: 添加新文章 - 文章标题"
 git push origin master
 
-# 🎉 网站会在 2-5 分钟内自动更新！
-```
+# 6. 手动部署到网站
+npm run build
+GIT_USER=miusing USE_SSH=true npm run deploy
 
-#### 方式二：使用分支工作（团队协作）
-
-```bash
-# 1. 确保在 master 分支
-git checkout master
-git pull origin master
-
-# 2. 创建新分支
-git checkout -b feature/new-article
-
-# 3. 创建文章文件
-touch blog/2024-01-15-new-article.md
-
-# 4. 编写内容
-code blog/2024-01-15-new-article.md
-
-# 5. 本地预览
-npm start
-
-# 6. 提交更改
-git add .
-git commit -m "feat: 添加新文章 - 文章标题"
-
-# 7. 推送分支并创建 PR
-git push origin feature/new-article
-
-# 8. 合并到 master 后自动部署
-git checkout master
-git merge feature/new-article
-git push origin master
+# 🎉 网站立即更新！
 ```
 
 ### 📝 日常使用说明
@@ -780,10 +738,14 @@ tags: [技术, 分享]
 
 更多内容..." > blog/$(date +%Y-%m-%d)-my-new-article.md
 
-# 提交并发布
+# 提交代码
 git add .
 git commit -m "feat: 添加新文章 - 我的新文章"
 git push origin master
+
+# 部署到网站
+npm run build
+GIT_USER=miusing USE_SSH=true npm run deploy
 ```
 
 #### 本地开发和预览
@@ -801,10 +763,14 @@ npm run serve
 # 访问 http://localhost:3000
 ```
 
-#### 手动部署（备用方案）
+#### 部署命令
 
 ```bash
-# 如果自动部署失败，可以手动部署
+# 构建和部署（推荐）
+npm run build
+GIT_USER=miusing USE_SSH=true npm run deploy
+
+# 或者一步完成（直接部署，会自动构建）
 GIT_USER=miusing USE_SSH=true npm run deploy
 ```
 
@@ -891,21 +857,25 @@ image: ./img/social-card.png  # 社交媒体分享图片
 
 ### 部署相关
 
-**Q: 推送代码后网站没有更新？**
+**Q: 手动部署后网站没有更新？**
 
 A: 检查以下几点：
-1. GitHub Actions 是否执行成功（访问 Actions 页面查看）
-2. 是否推送到了 `master` 分支（源代码分支）
-3. 检查 `gh-pages` 分支是否有新的提交
-4. 检查 `CNAME` 文件是否存在
-5. DNS 解析是否正确
+1. 部署命令是否执行成功
+2. 检查 `gh-pages` 分支是否有新的提交
+3. 检查 `CNAME` 文件是否存在
+4. DNS 解析是否正确
+5. 浏览器缓存问题
 
 ```bash
-# 检查 GitHub Actions 状态
-# 访问：https://github.com/miusing/blog/actions
+# 检查部署状态
+git log --oneline -5
 
-# 手动触发部署
-npm run deploy
+# 重新部署
+npm run build
+GIT_USER=miusing USE_SSH=true npm run deploy
+
+# 检查 gh-pages 分支
+git ls-remote origin gh-pages
 ```
 
 **Q: 自定义域名无法访问？**
@@ -1204,10 +1174,14 @@ EOF
 # 2. 本地预览
 npm start
 
-# 3. 提交发布到 master 分支
+# 3. 提交代码到 master 分支
 git add .
 git commit -m "feat: 添加第一篇博客文章"
-git push origin master  # 推送到 master 分支，自动触发部署
+git push origin master
+
+# 4. 手动部署到网站
+npm run build
+GIT_USER=miusing USE_SSH=true npm run deploy
 ```
 
 ### 创建第一个文档
@@ -1559,7 +1533,6 @@ module.exports = {
 |------|------|
 | [网站地址](https://wooyee.cc) | 博客主页 |
 | [GitHub 仓库](https://github.com/miusing/blog) | 源代码 |
-| [GitHub Actions](https://github.com/miusing/blog/actions) | 部署状态 |
 | [Docusaurus 文档](https://docusaurus.io/docs) | 官方文档 |
 
 ### 文件结构速查
