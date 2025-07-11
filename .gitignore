@@ -18,3 +18,16 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
+
+# Backup files
+*.backup
+*.bak
+*.tmp
+
+# IDE
+.vscode/settings.json
+.idea/
+
+# OS
+Thumbs.db

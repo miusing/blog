@@ -1,22 +1,36 @@
 // @ts-check
-// Note: type annotations allow type checking and IDEs autocompletion
+// 注意：类型注解允许类型检查和IDE自动补全
 
+// 正确引入主题
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Akara',
-  tagline: 'Never Knows Best',
-  url: 'https://messiahhh.github.io/',
-  baseUrl: '/blog/', 
+  title: '缪斯',
+  tagline: '热爱是永远的理由和答案！',
+  url: 'https://wooyee.cc',
+  baseUrl: '/',
+  trailingSlash: false,
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'messiahhh', // Usually your GitHub org/user name.
-  projectName: 'blog', // Usually your repo name.
+  organizationName: 'miusing', // 通常是你的GitHub组织/用户名
+  projectName: 'blog', // 通常是你的仓库名
   deploymentBranch: 'gh-pages',
-  plugins: ['@docusaurus/theme-live-codeblock'],
+  plugins: [
+    '@docusaurus/theme-live-codeblock',
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      {
+        // 配置选项
+        hashed: true,
+        language: ["en", "zh"],
+        highlightSearchTermsOnTargetPage: true,
+        explicitSearchResultPath: true,
+      },
+    ],
+  ],
   i18n: {
     defaultLocale: 'zh-Hans',
     locales: ['zh-Hans'],
@@ -38,12 +52,12 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
+          // 请将此处改为你的仓库地址
           editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         blog: {
           showReadingTime: true,
-          // Please change this to your repo.
+          // 请将此处改为你的仓库地址
           editUrl:
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
@@ -64,13 +78,13 @@ const config = {
       },
       announcementBar: {
         id: 'support_us',
-        content: '⭐️ 如果这个网站能帮助到你，欢迎给一个star支持作者  <a target="_blank" rel="noopener noreferrer" href="https://github.com/Messiahhh/blog">GitHub</a>',
+        content: '⭐️ 如果这个网站能帮助到你，欢迎给一个 star 支持我！<a target="_blank" rel="noopener noreferrer" href="https://github.com/miusing/blog">GitHub</a>',
         backgroundColor: '#fafbfc',
         textColor: '#091E42',
         isCloseable: true,
       }, 
       navbar: {
-        title: 'Akara的博客',
+        title: '亲爱的缪斯',
         hideOnScroll: true,
         items: [
           {
@@ -85,30 +99,25 @@ const config = {
           },
           {to: 'blog/面经', label: '面经', position: 'right'},
           {
-            href: 'https://github.com/messiahhh/blog',
+            href: 'https://github.com/miusing/blog',
             label: 'GitHub',
             position: 'right',
           },
         ],
-      }, 
-      prism: { 
+      },
+      prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
         defaultLanguage: 'javascript',
         additionalLanguages: ['rust'],
-      }, 
-      colorMode: {
-        respectPrefersColorScheme: true
-      },
-      algolia: {
-        // The application ID provided by Algolia
-        appId: 'BWG0DEIDEP',
-    
-        // Public API key: it is safe to commit it
-        apiKey: 'd3f9fff64e1510e7299229fb32996203',
-    
-        indexName: 'messiahhh',
-      }
+        },
+      // Algolia DocSearch 配置（暂时禁用）
+      // 如需启用搜索功能，请参考 README.md 中的 Algolia 配置说明
+      // algolia: {
+      //   appId: 'YOUR_APP_ID',
+      //   apiKey: 'YOUR_SEARCH_API_KEY',
+      //   indexName: 'YOUR_INDEX_NAME',
+      // }
     }),
 };
 

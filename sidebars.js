@@ -42,7 +42,7 @@ const sidebars = {
         // 'javascript/Fetch',
         'javascript/BOM',
         'javascript/DOM',
-        'javascript/正则',
+        // 'javascript/regex', // 暂时注释掉，存在MDX解析问题
         'javascript/Date',
         'javascript/Proxy',
         // 'javascript/Reflect',
