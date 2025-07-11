@@ -52,14 +52,19 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
+          routeBasePath: '/', // 将 docs 设为网站根路径
           // 请将此处改为你的仓库地址
-          editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          editUrl: 'https://github.com/miusing/blog/tree/master/',
         },
         blog: {
+          routeBasePath: '/about', // 将 blog 改为个人介绍页面
+          blogTitle: '个人介绍',
+          blogDescription: '关于我的个人介绍和经历',
           showReadingTime: true,
+          blogSidebarCount: 'ALL',
+          blogSidebarTitle: '个人介绍',
           // 请将此处改为你的仓库地址
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          editUrl: 'https://github.com/miusing/blog/tree/master/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -93,11 +98,11 @@ const config = {
           },
           {
             type: 'doc',
-            docId: 'HTML',
+            docId: 'intro',
             position: 'right',
-            label: '正文',
+            label: '技术文档',
           },
-          {to: 'blog/面经', label: '面经', position: 'right'},
+          {to: '/about', label: '关于我', position: 'right'},
           {
             href: 'https://github.com/miusing/blog',
             label: 'GitHub',
